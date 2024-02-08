@@ -31,8 +31,7 @@ class TimeSettingController extends Controller
         $time->time = $request->time;
         $time->save();
 
-        $notify[] = ['success', $notification];
-        return back()->withNotify($notify);
+        return back()->with('success', $notification);
     }
 
     public function delete(Request $request)
@@ -42,7 +41,6 @@ class TimeSettingController extends Controller
         ]);
         $time = TimeSetting::findOrFail($request->id);
         $time->delete();
-        $notify[] = ['success','Time deleted successfully'];
-        return back()->withNotify($notify);
+        return back()->with('success','Time deleted successfully');
     }
 }

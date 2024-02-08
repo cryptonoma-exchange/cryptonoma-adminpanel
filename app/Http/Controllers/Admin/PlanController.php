@@ -27,10 +27,10 @@ class PlanController extends Controller
         if($id){
             $plan = Plan::findOrFail($id);
             $plan->status = $request->status ? 1 : 0;
-            $notify[] = ['success','Plan updated successfully'];
+            $notification = 'Plan updated successfully';
         }else{
             $plan = new Plan();
-            $notify[] = ['success','Plan added successfully'];
+            $notification = 'Plan added successfully';
         }
         $plan->name = $request->name;
         $plan->minimum = $request->minimum ?? 0;
@@ -46,7 +46,7 @@ class PlanController extends Controller
         $plan->repeat_time = $request->repeat_time ?? 0;
         $plan->save();
 
-        return back()->withNotify($notify);
+        return back()->with('success', $notification);
     }
 
     protected function validation($request){

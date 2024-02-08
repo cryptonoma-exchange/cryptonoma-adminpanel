@@ -20,6 +20,20 @@
         </div>
 
         <div class="col-lg-12">
+
+                @if(session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
+
+                @if(session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
+    
+
             <div class="card b-radius--10 overflow-hidden">
                 <div class="card-body p-0">
                     <div class="table-responsive--md  table-responsive">

@@ -12,6 +12,20 @@
              <button class="btn btn-primary btn-md modalShow float-end text-end text-right" data-type="add" data-toggle="modal" data-target="#addModal"><i class="las la-plus"></i> @lang('Add New')</button>
         </div>
         <div class="col-lg-12">
+
+            @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+            @endif
+
+            @if(session('error'))
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            @endif
+
+            
             <div class="card b-radius--10 overflow-hidden">
                 <div class="card-body p-0">
                     <div class="table-responsive--md  table-responsive">
