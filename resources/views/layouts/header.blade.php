@@ -9,6 +9,10 @@ if (isset($atitle)) {
             break;  
          case 'time-settings':
             $active = 'time-settings';
+            break;  
+
+        case 'referral-setting':
+            $active = 'referral-setting';
             break;      
         case 'users':
             $active = 'users';
@@ -236,12 +240,17 @@ if (isset($atitle)) {
                     @endif
 
                      @if (in_array('read', explode(',', $AdminProfiledetails->support)))
-                    <li class="@@photogalleryactive"><a @if ($active=='time-settings' ) class="active" @endif href="{{ url('/admin/time-settings') }}"><i class="zmdi zmdi-ticket-star"></i> Time Settings
+                    <li class="@@photogalleryactive"><a @if ($active=='time-settings' ) class="active" @endif href="{{ url('/admin/time-settings') }}"><i class="zmdi zmdi-time"></i> Time Settings
                     </a></li>
                     @endif
 
                      @if (in_array('read', explode(',', $AdminProfiledetails->support)))
-                    <li class="@@photogalleryactive"><a @if ($active=='plans' ) class="active" @endif href="{{ url('/admin/plans') }}"><i class="zmdi zmdi-ticket-star"></i> Manage Plans
+                    <li class="@@photogalleryactive"><a @if ($active=='plans' ) class="active" @endif href="{{ url('/admin/plans') }}"><i class="zmdi zmdi-input-composite"></i> Manage Plans
+                    </a></li>
+                    @endif
+
+                    @if (in_array('read', explode(',', $AdminProfiledetails->support)))
+                    <li class="@@photogalleryactive"><a @if ($active=='referral-setting' ) class="active" @endif href="{{ url('/admin/referral-setting') }}"><i class="zmdi zmdi-device-hub"></i> Referral Levels
                     </a></li>
                     @endif
 

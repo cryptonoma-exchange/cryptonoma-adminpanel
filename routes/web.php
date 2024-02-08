@@ -295,6 +295,10 @@ Route::group(['middleware' => ['admin', 'twofa'], 'prefix' => 'admin', 'namespac
     Route::post('plans/update/{id}','PlanController@savePlan')->name('admin.plans.update');
 
 
-
+     //referral setting
+    Route::get('referral-setting','GeneralSettingController@referralSetting')->name('admin.setting.referral');
+    Route::get('referral-setting-status/{type}','GeneralSettingController@referralSettingStatus')->name('admin.setting.referral.status');
+    Route::post('referral/storeLevel','GeneralSettingController@referralStoreLevel')->name('admin.setting.referral.store.level');
+    
 
 });
