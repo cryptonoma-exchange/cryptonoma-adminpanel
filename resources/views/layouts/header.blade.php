@@ -4,6 +4,12 @@ if (isset($atitle)) {
         case 'dashboard':
             $active = 'dashboard';
             break;
+         case 'plans':
+            $active = 'plans';
+            break;  
+         case 'time-settings':
+            $active = 'time-settings';
+            break;      
         case 'users':
             $active = 'users';
             break;
@@ -228,6 +234,17 @@ if (isset($atitle)) {
                     <li class="@@photogalleryactive"><a @if ($active=='support' ) class="active" @endif href="{{ url('/admin/support') }}"><i class="zmdi zmdi-ticket-star"></i> Support
                             ({{ ticketcount() }})<span class="pull-right"> </span></a></li>
                     @endif
+
+                     @if (in_array('read', explode(',', $AdminProfiledetails->support)))
+                    <li class="@@photogalleryactive"><a @if ($active=='time-settings' ) class="active" @endif href="{{ url('/admin/time-settings') }}"><i class="zmdi zmdi-ticket-star"></i> Time Settings
+                    </a></li>
+                    @endif
+
+                     @if (in_array('read', explode(',', $AdminProfiledetails->support)))
+                    <li class="@@photogalleryactive"><a @if ($active=='plans' ) class="active" @endif href="{{ url('/admin/plans') }}"><i class="zmdi zmdi-ticket-star"></i> Manage Plans
+                    </a></li>
+                    @endif
+
                     @if (in_array('read', explode(',', $AdminProfiledetails->tradehistroylist)))
                     <li class="navigation__sub navigation__sub--toggled"><a @if ($active=='trades' ) class="active" @endif href="#"><i class="zmdi zmdi-time-restore"></i> Trade History</a>
                         <ul @if ($active=='buytrade' || $active=='selltrade' || $active=='pendingorder' ) style="display: block;" @else style="display: none;" @endif>

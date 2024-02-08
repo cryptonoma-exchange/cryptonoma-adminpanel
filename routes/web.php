@@ -282,4 +282,19 @@ Route::group(['middleware' => ['admin', 'twofa'], 'prefix' => 'admin', 'namespac
 
 	Route::post('updateliq', 'LiquidityController@updateliq');
 
+
+
+	//time setting
+    Route::get('time-settings','TimeSettingController@index')->name('admin.times.index');
+    Route::post('time-store/{id?}','TimeSettingController@saveTime')->name('admin.times.store');
+    Route::post('time-delete','TimeSettingController@delete')->name('admin.times.delete');
+
+	  //plan
+    Route::get('plans','PlanController@index')->name('admin.plans.index');
+    Route::post('plans/store','PlanController@savePlan')->name('admin.plans.store');
+    Route::post('plans/update/{id}','PlanController@savePlan')->name('admin.plans.update');
+
+
+
+
 });

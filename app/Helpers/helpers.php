@@ -1,5 +1,21 @@
 <?php
 
+
+function showAmount($amount, $decimal = 2, $separate = true, $exceptZeros = false){
+    $separator = '';
+    if($separate){
+        $separator = ',';
+    }
+    $printAmount = number_format($amount, $decimal, '.', $separator);
+    if($exceptZeros){
+    $exp = explode('.', $printAmount);
+        if($exp[1]*1 == 0){
+            $printAmount = $exp[0];
+        }
+    }
+    return $printAmount;
+}
+
 function display_format($number, $digit=8, $format=null)
 {
     if ($format =="") {
