@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\Admin\StageController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -299,6 +302,18 @@ Route::group(['middleware' => ['admin', 'twofa'], 'prefix' => 'admin', 'namespac
     Route::get('referral-setting','GeneralSettingController@referralSetting')->name('admin.setting.referral');
     Route::get('referral-setting-status/{type}','GeneralSettingController@referralSettingStatus')->name('admin.setting.referral.status');
     Route::post('referral/storeLevel','GeneralSettingController@referralStoreLevel')->name('admin.setting.referral.store.level');
+
+
+
+    // Stages Funtions
+	Route::get('stages',[StageController::class, 'index'])->name('stages');
+	Route::get('add-stages',[StageController::class, 'create'])->name('newstage');
+	Route::post('add-stages',[StageController::class, 'store'])->name('addstage');
+	Route::get('update-stage/{id}',[StageController::class, 'edit'])->name('edit.stage');
+	Route::post('update-stage',[StageController::class, 'update'])->name('update.stage');
+	Route::get('mark-active/{id}',[StageController::class, 'markactive'])->name('markactive');
+	Route::get('pause-sales/{id}',[StageController::class, 'pausesales'])->name('pausesales');
+	Route::get('resume-sales/{id}',[StageController::class, 'resumesales'])->name('resumesales');
     
 
 });

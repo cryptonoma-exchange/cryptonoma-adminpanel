@@ -7,10 +7,12 @@ if (isset($atitle)) {
          case 'plans':
             $active = 'plans';
             break;  
-         case 'time-settings':
+        case 'time-settings':
             $active = 'time-settings';
-            break;  
-
+            break; 
+        case 'stages':
+            $active = 'stages';
+            break;   
         case 'referral-setting':
             $active = 'referral-setting';
             break;      
@@ -251,6 +253,12 @@ if (isset($atitle)) {
 
                     @if (in_array('read', explode(',', $AdminProfiledetails->support)))
                     <li class="@@photogalleryactive"><a @if ($active=='referral-setting' ) class="active" @endif href="{{ url('/admin/referral-setting') }}"><i class="zmdi zmdi-device-hub"></i> Referral Levels
+                    </a></li>
+                    @endif
+
+
+                    @if (in_array('read', explode(',', $AdminProfiledetails->support)))
+                    <li class="@@photogalleryactive"><a @if ($active=='stages' ) class="active" @endif href="{{ url('/admin/stages') }}"><i class="zmdi zmdi-device-hub"></i> ICO /STO Stage
                     </a></li>
                     @endif
 
