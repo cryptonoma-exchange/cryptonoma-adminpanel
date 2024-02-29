@@ -113,6 +113,34 @@
                                               <small>Finish date/time for sale. Can't purchase after time.</small>
                                             </div>
                                         </div>
+
+
+                                        <div class="form-row">
+                                             <div class="form-group col-md-12">
+                                            <textarea name="description" id="" cols="30" rows="10" class="form-control" placeholder="Description..."></textarea>
+                                            </div>
+                                        </div>
+
+                                        <h4>Social Links</h4>
+                                        <a id="add-social-link" class="btn btn-warning btn-xs text-right float-right">Add Social Link</a>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <div id="social-links-container">
+                                              
+                                                 <div class="input-group">
+                                                    <input type="text" name="social_links[]" class="form-control social-link" placeholder="Enter social link">
+                                                  
+                                                </div>
+                                                    <
+                                                </div>
+                                            </div>
+
+                                            
+
+                                        </div>      
+
+
+
                                         <button type="submit" class="btn btn-primary">Add Stage</button>
                                     </form>
                                 </div>
@@ -124,3 +152,28 @@
         </div>
     </div>
 @endsection
+
+@push('child-scripts')
+
+
+    <script>
+        $(document).ready(function(){
+            // Add social link field
+            $('#add-social-link').click(function(){
+                var socialLinkField = '<div class="form-group">';
+                socialLinkField += '<div class="input-group">';
+                socialLinkField += '<input type="text" name="social_links[]" class="form-control social-link" placeholder="Enter social link">';
+                socialLinkField += '<div class="input-group-append">';
+                socialLinkField += '<button class="btn btn-danger remove-social-link" type="button">Remove</button>';
+                socialLinkField += '</div></div></div>';
+                $('#social-links-container').append(socialLinkField);
+            });
+
+            // Remove social link field
+            $(document).on('click', '.remove-social-link', function(){
+                $(this).closest('.form-group').remove();
+            });
+        });
+    </script>
+
+@endpush

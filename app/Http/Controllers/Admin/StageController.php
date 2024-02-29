@@ -50,6 +50,17 @@ class StageController extends Controller
         $st->max = $request->max;
         $st->start_date = $request->startdate;
         $st->end_date = $request->enddate;
+        
+        // Check if social links exist in the request
+        if ($request->has('social_links')) {
+            // Convert social links array to JSON before storing
+            $st->links = json_encode($request->social_links);
+        } else {
+            // If social links don't exist, store null
+            $st->links = null;
+        }
+
+        $st->description = isset($request->description) ? $request->description : null;
         $st->status = "active";
         $st->sales = "on";
         $st->save();
