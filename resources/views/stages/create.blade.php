@@ -46,6 +46,27 @@
                                 <div class="col-md-8 offset-md-2">
                                     <form method="POST" action="{{route('addstage')}}">
                                         @csrf
+
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                
+                                                <label for="">Select Token / Coin</label>
+
+                                                <select class="form-control" id="token_id" name="token_id" required>
+
+                                                    <option value=" ">Select Token / Coin</option>
+                                                    
+                                                    @foreach($coins as $coin)
+
+                                                    <option value="{{ $coin->id }}">{{ $coin->coinname }}</option>
+
+                                                    @endforeach
+
+                                                </select>
+
+                                            </div>
+                                        </div>    
+
                                         <div class="form-row">
                                             <div class="form-group col-md-12">
                                                 <label>Stage Title/Name</label>

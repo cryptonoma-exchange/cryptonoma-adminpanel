@@ -48,7 +48,8 @@
                                     <div class="col-md-4 col-sm-12 text-dark">
                                         <div class="p-1 border rounded shadow-none card position-relative text-dark" x-data="{open: false, toggle() { this.open = ! this.open }}">
                                             <div class="p-3">
-                                              <h3 class="card-category d-inline">{{$stage->stage_name}}
+                                              <h3 class="card-category d-inline">
+                                                {{$stage->stage_name}}
                                                 @if ($stage->status == "active" && $stage->sales == "on")
                                                 <span class="px-3 py-1 badge badge-success">RUNNING</span>
                                                 @elseif($stage->status == "active" && $stage->sales != "on")
@@ -86,6 +87,7 @@
                                             </div>
                                             
                                             <div class="p-2 mt-2 text-center">
+                                                <h4 class="text-dark" style="color:#000">{{$stage->coin->coinname}}</h4>
                                                 <p class="text-dark" style="color: #000;">Token Issued:</p>
                                                 <h1 class='text-primary'>{{$stage->token}}</h1>
                                                 <small style="color: #000;">Available: {{$stage->token_avail}} Tokens</small> 

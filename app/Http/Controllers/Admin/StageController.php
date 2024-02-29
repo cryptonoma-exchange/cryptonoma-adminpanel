@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Stage;
 use App\Models\Settings;
+use App\Models\Commission;
 
 class StageController extends Controller
 {
@@ -22,6 +23,7 @@ class StageController extends Controller
     public function create(){
         return view('stages.create',[
             'settings' => Settings::where('id', '1')->first(),
+            'coins' => Commission::where('status', '1')->get(),
             'title' => "Add Stage",
         ]);
     }
@@ -30,6 +32,7 @@ class StageController extends Controller
         return view('stages.update',[
             'stage' => Stage::where('id', $id)->first(),
             'settings' => Settings::where('id', '1')->first(),
+            'coins' => Commission::where('status', '1')->get(),    
             'title' => "Update Stage",
         ]);
     }
@@ -37,6 +40,7 @@ class StageController extends Controller
     // Admin adds stage
     public function store(Request $request){
         $st = new Stage();
+        $st->coin_id = $request->token_id;
         $st->stage_name = $request->stage_name;
         $st->token = $request->token;
         $st->token_avail = $request->token;
@@ -56,6 +60,7 @@ class StageController extends Controller
     public function update(Request $request){
         
         Stage::where('id', $request->stage_id)->update([
+            'coin_id'=> $request->token_id,
             'stage_name'=> $request->stage_name,
             'token'=> $request->token,
             'token_avail' => $request->token,
